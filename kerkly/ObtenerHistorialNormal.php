@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     presupuesto.idPresupuesto INNER JOIN oficio_kerkly on presupuesto.idOficio = 
     oficio_kerkly.idoficio_trabajador INNER JOIN kerkly on kerkly.Curp = oficio_kerkly.id_kerklyK INNER JOIN cliente on 
     cliente.Correo = presupuesto.idCliente INNER JOIN direccion on direccion.idDireccion = 
-    cliente.Direccion_idDireccion WHERE kerkly.Telefono = '2121212121' and contrato.Fecha_Final 
+    cliente.Direccion_idDireccion WHERE kerkly.Telefono = '$telefono_NoR' and contrato.Fecha_Final 
     IS not null;";
 
     $Resultado = mysqli_query($Conexion, $Consulta);

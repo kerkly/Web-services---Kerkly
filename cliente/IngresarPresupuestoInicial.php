@@ -8,9 +8,19 @@
         $nombreO  = $_POST['nombreO'];
         $latitud = $_POST['latitud'];
         $longitud = $_POST['longitud'];
+        
+
+      /*  $Curp =  "ROLM981221HGRSPN08";
+        $Problematica = "MI PROBLEMA";
+        $telefono  = "2121212121";
+        $nombreO  = "Mecánico";
+        $latitud = "21.5";
+        $longitud = "3.2";
+        */
+        
 
         $sqlInsertDireccion = "INSERT INTO direccion (latitud, longitud) VALUES
-            ('$latitud','$longitud','$idNoRTelefono');";
+            ('$latitud','$longitud');";
 
         $ejecutado = mysqli_query($Conexion, $sqlInsertDireccion);
 
@@ -22,7 +32,7 @@
 
         if (mysqli_query($Conexion, $updateCliente)) {
             $obtenerId = "SELECT Correo FROM cliente WHERE telefonoCliente = '$telefono'";
-            $resultado = mysqli_query($Conexion, $resultado);
+            $resultado = mysqli_query($Conexion, $obtenerId);
 
             $curp_ = "";
 
@@ -30,11 +40,12 @@
                 $curp_ = $fila[0];
             }
 
-            $consultaOficio = "SELECT idoficio_trabajador FROM kerkly INNER JOIN oficio_kerkly on
-            kerkly.Curp = oficio_kerkly.id_kerklyK INNER JOIN oficios on oficio_kerkly.id_oficioK =
-            oficios.idOficio WHERE oficios.nombreO = '$nombreO' and kerkly.Curp = '$curp_';";
 
-            $resultadoOficio = mysqli_query($Conexion, $resultadoOficio);
+            $consultaOficio = "SELECT oficio_kerkly.idoficio_trabajador FROM kerkly INNER JOIN oficio_kerkly on
+            kerkly.Curp = oficio_kerkly.id_kerklyK INNER JOIN oficios on oficio_kerkly.id_oficioK =
+            oficios.idOficio WHERE oficios.nombreO = '$nombreO' and kerkly.Curp = '$Curp';";
+
+            $resultadoOficio = mysqli_query($Conexion, $consultaOficio);
 
             $oficio = "";
 
@@ -43,9 +54,9 @@
             }
 
             $insertPresupuesto = "INSERT INTO presupuesto (problema, idCliente, IdOficio, fechaP) VALUES
-                                    ('$Problematica', '$obtenerId', '$oficio', NOW());"
+                                    ('$Problematica', '$curp_', '$oficio', NOW());";
 
-            $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto);
+            $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto) or die(mysqli_error($Conexion));
 
             if ($ejecutadoInsert == 1) {
                 echo "Datos enviados";
@@ -54,7 +65,7 @@
             }
         }
 
-    }
+   }
 
 
-<?
+?>

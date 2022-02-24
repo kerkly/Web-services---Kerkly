@@ -5,12 +5,25 @@ include 'conexionK.php';
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $telefono = $_GET['telefonoCliente'];
 
-        $consulta = "SELECT oficios.nombreO, contrato.idContrato, contrato.Fecha_Inicio, cliente.Nombre, cliente.Apellido_Paterno, 
-        cliente.Apellido_Materno, kerkly.Nombre, kerkly.Apellido_Paterno, kerkly.Apellido_Materno from oficios INNER JOIN oficio_kerkly on 
-        oficios.idOficio = oficio_kerkly.id_oficioK INNER JOIN kerkly on kerkly.Curp = oficio_kerkly.id_kerklyK INNER JOIN presupuesto on 
-        presupuesto.idOficio = oficio_kerkly.idoficio_trabajador INNER JOIN contrato on contrato.id_presupuesto = presupuesto.idPresupuesto 
-        INNER JOIN cliente on presupuesto.idCliente = cliente.Correo WHERE cliente.telefonoCliente = '$telefono' and contrato.Fecha_Final 
-        IS NULL";
+        $consulta = "SELECT
+        oficios.nombreO,
+        contrato.idContrato,
+        contrato.Fecha_Inicio,
+        cliente.Nombre AS cliente_nombre,
+        cliente.Apellido_Paterno AS cliente_ap,
+        cliente.Apellido_Materno AS cliente_am,
+        kerkly.Nombre,
+        kerkly.Apellido_Paterno,
+        kerkly.Apellido_Materno
+    FROM
+        oficios
+    INNER JOIN oficio_kerkly ON oficios.idOficio = oficio_kerkly.id_oficioK
+    INNER JOIN kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
+    INNER JOIN presupuesto ON presupuesto.idOficio = oficio_kerkly.idoficio_trabajador
+    INNER JOIN contrato ON contrato.id_presupuesto = presupuesto.idPresupuesto
+    INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
+    WHERE
+        cliente.telefonoCliente = '$telefono' AND contrato.Fecha_Final IS NULL";
         
         $check = mysqli_query($Conexion,$consulta);
 

@@ -7,7 +7,6 @@
 
    if($_SERVER['REQUEST_METHOD']=='GET'){
         $telefono= $_GET['telefonoCliente'];
-        //$telefono= '2121212121';
 
         $Consulta = "SELECT
         presupuesto.idPresupuesto,
@@ -37,7 +36,7 @@
     INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
     INNER JOIN direccion ON cliente.Direccion_idDireccion = direccion.idDireccion
     WHERE
-        cliente.telefonoCliente = '$telefono' AND presupuesto.pago_total IS NOT NULL OR presupuesto.pago_total != 0.0;";
+        cliente.telefonoCliente = '$telefono' AND (presupuesto.pago_total IS NOT NULL OR presupuesto.pago_total != 0.0;)";
 
         $Resultado = mysqli_query($Conexion, $Consulta);
 

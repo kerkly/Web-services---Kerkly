@@ -36,7 +36,7 @@
     INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
     INNER JOIN direccion ON cliente.Direccion_idDireccion = direccion.idDireccion
     WHERE
-        cliente.telefonoCliente = '$telefono' AND (presupuesto.pago_total IS NOT NULL OR presupuesto.pago_total != 0.0;)";
+        cliente.telefonoCliente = '$telefono' AND (presupuesto.pago_total IS NOT NULL OR presupuesto.pago_total != 0.0)";
 
         $Resultado = mysqli_query($Conexion, $Consulta);
 

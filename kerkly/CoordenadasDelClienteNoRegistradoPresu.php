@@ -2,7 +2,7 @@
 include 'conexion.php';
  if($_SERVER['REQUEST_METHOD'] == 'GET'){
    $telefono = $_GET['telefono'];
-   $telefono = '7171717171';
+  // $telefono = '7171717171';
 
     $Consulta = "SELECT clientenoregistrado.nombre_noR,
     direccion.latitud,

@@ -8,16 +8,7 @@
         $nombreO  = $_POST['nombreO'];
         $latitud = $_POST['latitud'];
         $longitud = $_POST['longitud'];
-        
 
-      /*  $Curp =  "ROLM981221HGRSPN08";
-        $Problematica = "MI PROBLEMA";
-        $telefono  = "2121212121";
-        $nombreO  = "Mecánico";
-        $latitud = "21.5";
-        $longitud = "3.2";
-        */
-        
 
         $sqlInsertDireccion = "INSERT INTO direccion (latitud, longitud) VALUES
             ('$latitud','$longitud');";
@@ -53,8 +44,8 @@
                 $oficio = $fila[0];
             }
 
-            $insertPresupuesto = "INSERT INTO presupuesto (problema, idCliente, IdOficio, fechaP) VALUES
-                                    ('$Problematica', '$curp_', '$oficio', NOW());";
+            $insertPresupuesto = "INSERT INTO presupuesto (problema, idCliente, IdOficio, fechaP, idDireccion) VALUES
+                                    ('$Problematica', '$curp_', '$oficio', NOW(), $idDireccion);";
 
             $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto) or die(mysqli_error($Conexion));
 

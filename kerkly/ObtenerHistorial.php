@@ -4,7 +4,7 @@ include_once('conexion.php');
 if($_SERVER['REQUEST_METHOD']=='GET'){
     $telefono_NoR=$_GET['Telefono'];
 
-    $Consulta = "SELECT contrato_noregistrado.Fecha_Inicio_NoRegistrado, contrato_noregistrado.Fecha_Final_NoRegistrado, contrato_noregistrado.idContraNoRegistrado,
+    $Consulta = "SELECT contrato_noregistrado.Fecha_Inicio_NoRegistrado, contrato_noregistrado.Fecha_Final_NoRegistrado, contrato_noregistrado.idContratoNoRegistrado,
      clientenoregistrado.nombre_noR, clientenoregistrado.apellidoP_noR, clientenoregistrado.apellidoM_noR, clientenoregistrado.telefono_NoR, 
      presupuesto_noregistrado.problema,presupuesto_noregistrado.idPresupuestoNoRegistrado, direccion.Ciudad, direccion.Estado, direccion.Pais, 
      direccion.Calle, direccion.Colonia, direccion.No_Exterior, direccion.Codigo_Postal, direccion.Referencia from 

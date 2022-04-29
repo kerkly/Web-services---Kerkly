@@ -8,10 +8,18 @@
         $nombreO  = $_POST['nombreO'];
         $latitud = $_POST['latitud'];
         $longitud = $_POST['longitud'];
+        $Ciudad = $_POST['Ciudad'];
+        $Estado  = $_POST['Estado'];
+        $Pais  = $_POST['Pais'];
+        $Calle = $_POST['Calle'];
+        $Colonia = $_POST['Colonia'];
+        $No_Exterior  = $_POST['No_Exterior'];
+        $Codigo_Postal = $_POST['Codigo_Postal'];
+        $Referencia = $_POST['Referencia'];
 
 
-        $sqlInsertDireccion = "INSERT INTO direccion (latitud, longitud) VALUES
-            ('$latitud','$longitud');";
+        $sqlInsertDireccion = "INSERT INTO direccion (Ciudad, Estado, Pais, Calle, Colonia, No_Exterior, Codigo_Postal, Referencia, latitud, longitud) VALUES
+            ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$Referencia',  '$latitud','$longitud');";
 
         $ejecutado = mysqli_query($Conexion, $sqlInsertDireccion);
 

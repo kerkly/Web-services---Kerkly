@@ -45,10 +45,57 @@
             while($fila = mysqli_fetch_array($Resultado, MYSQLI_ASSOC)){
                 $array[] = $fila;
             }
-            echo json_encode($array, JSON_UNESCAPED_UNICODE);
-            $Conexion->close();
+            //echo json_encode($array, JSON_UNESCAPED_UNICODE);
+            //$Conexion->close();
         }else{
             echo 'Error';
         }
+
+
+        $consulta = "SELECT
+        presupuesto_noregistrado.idPresupuestoNoRegistrado,
+        presupuesto_noregistrado.problema,
+        presupuesto_noregistrado.fechaPresupuesto,
+        direccion.Calle,
+        direccion.Colonia,
+        direccion.No_Exterior,
+        direccion.Codigo_Postal,
+        direccion.Referencia,
+        kerkly.Nombre,
+        kerkly.Apellido_Paterno,
+        kerkly.Apellido_Materno,
+        kerkly.Telefono,
+        cliente.Nombre AS nombre_cliente,
+        cliente.Apellido_Paterno AS apellidoPaterno_cliente,
+        cliente.Apellido_Materno AS apellidoNaterno_cliente,
+        cliente.telefonoCliente,
+        oficios.nombreO
+     FROM
+        oficio_kerkly
+     INNER JOIN oficios ON oficio_kerkly.id_oficioK = oficios.idOficio
+     INNER JOIN presupuesto_noregistrado ON presupuesto_noregistrado.idOficio = oficio_kerkly.idoficio_trabajador
+     INNER JOIN cliente ON cliente.Correo = presupuesto_noregistrado.idCliente
+     INNER JOIN direccion ON direccion.idDireccion = presupuesto_noregistrado.idDireccion
+     INNER JOIN kerkly ON oficio_kerkly.id_kerklyK = kerkly.Curp
+     WHERE
+        cliente.telefonoCliente = '$telefono' AND (presupuesto_noregistrado.PagoTotal != 0);";
+
+
+    $Resultado = mysqli_query($Conexion, $consulta);
+
+    $array_ = array();
+    if(isset($Resultado)){
+        while($fila = mysqli_fetch_array($Resultado, MYSQLI_ASSOC)){
+            $array_[] = $fila;
+        }
+        //echo json_encode($array, JSON_UNESCAPED_UNICODE);
+        $arr = array_merge($array, $array_);
+        echo json_encode($arr, JSON_UNESCAPED_UNICODE);
+        $Conexion->close();
+    }else{
+        echo 'Error';
+    }
+
+
     }
 ?>

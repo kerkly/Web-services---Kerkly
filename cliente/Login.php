@@ -1,7 +1,6 @@
 <?php 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-   
     $Correo=$_POST['Correo'];
     $Nombre=$_POST['Nombre'];
     $Apellido_Paterno=$_POST['Apellido_Paterno'];
@@ -11,6 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $Contrasena=$_POST['Contrasena'];
     $fue_NoRegistrado=$_POST['fue_NoRegistrado'];
     $deviceID = $_POST['deviceID'];
+   
 
     require_once('conexionK.php');
     $sqlC = "SELECT * FROM cliente WHERE Correo ='$Correo'";
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
           fue_NoRegistrado, deviceID) VALUES ('$Correo','$Nombre','$Apellido_Paterno','$Apellido_Materno','$telefonoCliente','$generoCliente','$hashC',
           '$fue_NoRegistrado' ,'$deviceID')";
           if(mysqli_query($Conexion,$sql)){
-             echo 'correcto';
+             echo "Registrado";
         }else{
            echo '¡Error!' .$sql.mysqli_error($Conexion);
         }

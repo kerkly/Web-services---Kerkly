@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         if(password_verify($Contrasena,$hash)){
             echo 'Bienvenido';
         }else{
-            echo 'error de usuario';
+            echo 'Contraseña Incorrecta';
         }
     }
      }else{

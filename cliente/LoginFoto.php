@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         echo 'El Número ya existe';
       }else{
          $path = "clienteImg/$Nombre.png";
-         $url= "https://2163-189-143-69-188.ngrok.io/Kerkly/cliente/$path";
+         $url= "https://6c7a-2806-104e-3-c602-84b5-15a4-d5dc-f950.ngrok.io/Kerkly/cliente/$path";
          $hashC = password_hash($Contrasena, PASSWORD_BCRYPT);
           $sql = "INSERT INTO cliente (fotoPerfil,Correo,Nombre,Apellido_Paterno,Apellido_Materno,telefonoCliente,generoCliente,Contrasena,
           fue_NoRegistrado, deviceID) VALUES ('$url','$Correo','$Nombre','$Apellido_Paterno','$Apellido_Materno','$telefonoCliente','$generoCliente','$hashC',

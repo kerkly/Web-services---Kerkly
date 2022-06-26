@@ -14,10 +14,10 @@
         $Colonia = $_POST['Colonia'];
         $No_Exterior  = $_POST['No_Exterior'];
         $Codigo_Postal = $_POST['Codigo_Postal'];
-        $Referencia = $_POST['Referencia'];
+        //$Referencia = $_POST['Referencia'];
 
-        $sqlInsertDireccion = "INSERT INTO direccion (Ciudad, Estado, Pais, Calle, Colonia, No_Exterior, Codigo_Postal, Referencia, latitud, longitud) VALUES
-        ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$Referencia',  '$latitud','$longitud');";
+        $sqlInsertDireccion = "INSERT INTO direccion (Ciudad, Estado, Pais, Calle, Colonia, No_Exterior, Codigo_Postal, latitud, longitud) VALUES
+        ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$latitud','$longitud');";
     
         $ejecutado = mysqli_query($Conexion, $sqlInsertDireccion);
     

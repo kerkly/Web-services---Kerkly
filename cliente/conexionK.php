@@ -9,6 +9,8 @@ $Conexion = mysqli_connect($servidor, $UsaurioDB, $ContrasenaDB,$NombreDB);
 if($Conexion->connect_error){
     die("fallo la conexion" .$Conexion->connect_error);
 
+}else{
+    echo 'todo bien';
 }
 
 /*

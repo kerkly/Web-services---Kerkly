@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       if(!isset($check)){
        //  echo 'El Número no existe';
          $path = "clienteImg/$Nombre.png";
-         $url= "https://542d-189-143-89-128.ngrok.io/Kerkly/cliente/$path";
+         $url= "http://localhost/Kerkly/cliente/$path";
          $hashC = password_hash($Contrasena, PASSWORD_BCRYPT);
           $sql = "INSERT INTO cliente (fotoPerfil,Correo,Nombre,Apellido_Paterno,Apellido_Materno,telefonoCliente,generoCliente,Contrasena,
           fue_NoRegistrado, deviceID) VALUES ('$url','$Correo','$Nombre','$Apellido_Paterno','$Apellido_Materno','$telefonoCliente','$generoCliente','$hashC',

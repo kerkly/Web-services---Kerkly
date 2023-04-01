@@ -6,7 +6,7 @@
 
         $consulta = "SELECT cliente.Correo, cliente.Nombre, cliente.Apellido_Paterno, cliente.Apellido_Materno, cliente.fotoPerfil
         from cliente where cliente.telefonoCliente = '$telefono'";
-        
+
         $check = mysqli_query($Conexion,$consulta);
 
         $array = array();

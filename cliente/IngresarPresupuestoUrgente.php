@@ -35,7 +35,7 @@
         }
 
         $consultaOficio = "SELECT oficio_kerkly.idoficio_trabajador
-        FROM oficio_kerkly INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK WHERE oficios.nombreO = '$nombreO';";
+        FROM oficio_kerkly INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK WHERE oficios.nombreO = '$nombreO'";
 
         $resultadoOficio = mysqli_query($Conexion, $consultaOficio);
 

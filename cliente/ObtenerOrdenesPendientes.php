@@ -4,26 +4,25 @@ include 'conexionK.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $telefono = $_GET['telefonoCliente'];
-
+        //$telefono = '7471503418';
         $consulta = "SELECT
         oficios.nombreO,
-        contrato.idContrato,
-        contrato.Fecha_Inicio,
         cliente.Nombre AS cliente_nombre,
         cliente.Apellido_Paterno AS cliente_ap,
         cliente.Apellido_Materno AS cliente_am,
         kerkly.Nombre,
         kerkly.Apellido_Paterno,
-        kerkly.Apellido_Materno
+        kerkly.Apellido_Materno,
+        kerkly.correo_electronico,
+        presupuesto.idPresupuesto
     FROM
         oficios
     INNER JOIN oficio_kerkly ON oficios.idOficio = oficio_kerkly.id_oficioK
     INNER JOIN kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
     INNER JOIN presupuesto ON presupuesto.idOficio = oficio_kerkly.idoficio_trabajador
-    INNER JOIN contrato ON contrato.id_presupuesto = presupuesto.idPresupuesto
-    INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
+        INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
     WHERE
-        cliente.telefonoCliente = '$telefono' AND contrato.Fecha_Final IS NULL";
+        cliente.telefonoCliente = '$telefono'";
         
         $check = mysqli_query($Conexion,$consulta);
 

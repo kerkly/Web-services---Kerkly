@@ -53,15 +53,15 @@
     
    
 
-      $consulta = "SELECT
-      presupuesto_noregistrado.idPresupuestoNoRegistrado,
+      $consulta = "SELECT presupuesto_noregistrado.idPresupuestoNoRegistrado,
       presupuesto_noregistrado.problema,
       presupuesto_noregistrado.fechaPresupuesto,
+      direccion.latitud, direccion.longitud,
       direccion.Calle, direccion.Colonia, direccion.No_Exterior,
       direccion.Codigo_Postal,
       direccion.Referencia, cliente.Correo, cliente.Nombre,
       cliente.Apellido_Paterno, cliente.Apellido_Materno,
-      cliente.telefonoCliente FROMoficio_kerkly INNER JOIN oficios ON oficio_kerkly.id_oficioK = oficios.idOficio
+      cliente.telefonoCliente FROM oficio_kerkly INNER JOIN oficios ON oficio_kerkly.id_oficioK = oficios.idOficio
    INNER JOIN presupuesto_noregistrado ON presupuesto_noregistrado.idOficio = oficio_kerkly.idoficio_trabajador
    INNER JOIN cliente ON cliente.Correo = presupuesto_noregistrado.idCliente
    INNER JOIN direccion ON direccion.idDireccion = presupuesto_noregistrado.idDireccion

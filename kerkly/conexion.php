@@ -1,14 +1,13 @@
 <?php
 
 $servidor= "localhost";
-$NombreDB = "kerkly";
-$UsaurioDB = "AdminKerkly";
-$ContrasenaDB = "admin kerkly001";
+$NombreDB = "bdsaua";
+$UsaurioDB = "usrsaua";
+$ContrasenaDB = "AmorMio15$&";
 
 $Conexion = mysqli_connect($servidor, $UsaurioDB, $ContrasenaDB,$NombreDB);
+
 if($Conexion->connect_error){
     die("fallo la conexion" .$Conexion->connect_error);
-
 }
-
 ?>

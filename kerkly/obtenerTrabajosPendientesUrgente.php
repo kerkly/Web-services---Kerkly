@@ -3,7 +3,7 @@
 include_once('conexion.php');
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
-    $Telefono=$_GET['Telefono'];
+    $telefono_NoR=$_GET['Telefono'];
 
     $Consulta = "SELECT
     cliente.Nombre,
@@ -11,9 +11,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     cliente.Apellido_Materno,
     cliente.telefonoCliente,
     cliente.Correo,
-    presupuesto.problema,
-    presupuesto.idPresupuesto,
-    presupuesto.fechaP,
+    presupuesto_noregistrado.problema,
+    presupuesto_noregistrado.idPresupuestoNoRegistrado,
+    presupuesto_noregistrado.fechaPresupuesto,
     direccion.Ciudad,
     direccion.Estado,
     direccion.Pais,
@@ -23,13 +23,13 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     direccion.Codigo_Postal,
     direccion.Referencia
 FROM
-    presupuesto
-INNER JOIN oficio_kerkly ON presupuesto.idOficio = oficio_kerkly.idoficio_trabajador
+    presupuesto_noregistrado
+INNER JOIN oficio_kerkly ON presupuesto_noregistrado.idOficio = oficio_kerkly.idoficio_trabajador
 INNER JOIN kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
-INNER JOIN cliente ON cliente.Correo = presupuesto.idCliente
+INNER JOIN cliente ON cliente.Correo = presupuesto_noregistrado.idCliente
 INNER JOIN direccion ON direccion.idDireccion = cliente.Direccion_idDireccion
 WHERE
-    kerkly.Telefono = '$Telefono' and presupuesto.aceptoCliente = 1 and presupuesto.trabajoTerminado = '0'";
+    kerkly.Telefono = '$telefono_NoR' AND presupuesto_noregistrado.trabajoTerminado = '0'";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

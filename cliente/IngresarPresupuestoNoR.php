@@ -20,8 +20,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
 
-     $sqlInsertPresupuestoNR = "INSERT INTO presupuesto_noregistrado (idOficio, problema, idNoRTelefono, fechaPresupuesto) VALUES  
-     ('$idK','$Problematica','$idNoRTelefono', NOW());";
+     $sqlInsertPresupuestoNR = "INSERT INTO presupuesto_noregistrado (idOficio, problema, idNoRTelefono, fechaPresupuesto, aceptoCliente ,trabajoTerminado ) VALUES  
+     ('$idK','$Problematica','$idNoRTelefono', NOW()),'0','0'";
 
     $ejecutado = mysqli_query($Conexion,$sqlInsertPresupuestoNR);
 

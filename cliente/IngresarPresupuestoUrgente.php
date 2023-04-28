@@ -46,7 +46,7 @@
         }
 
         $insertPresupuesto = "INSERT INTO presupuesto_noregistrado (problema, idCliente, IdOficio, fechaPresupuesto, idDireccion) VALUES
-                                    ('$Problematica', '$cliente', $oficio, NOW(), $idDireccion);";
+                                    ('$Problematica', '$cliente', $oficio, NOW(), $idDireccion)";
 
         $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto) or die(mysqli_error($Conexion));
 

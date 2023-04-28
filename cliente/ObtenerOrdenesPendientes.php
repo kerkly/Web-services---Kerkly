@@ -22,7 +22,7 @@ include 'conexionK.php';
     INNER JOIN presupuesto ON presupuesto.idOficio = oficio_kerkly.idoficio_trabajador
         INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
     WHERE
-        cliente.telefonoCliente = '$telefono'";
+        cliente.telefonoCliente = '$telefono' and presupuesto.aceptoCliente ='NULL'";
         
         $check = mysqli_query($Conexion,$consulta);
 

@@ -52,8 +52,8 @@
                 $oficio = $fila[0];
             }
 
-            $insertPresupuesto = "INSERT INTO presupuesto (problema, idCliente, IdOficio, fechaP, idDireccion) VALUES
-                                    ('$Problematica', '$curp_', '$oficio', NOW(), $idDireccion);";
+            $insertPresupuesto = "INSERT INTO presupuesto (problema, idCliente, IdOficio, fechaP, idDireccion, aceptoCliente, trabajoTerminado) VALUES
+                                    ('$Problematica', '$curp_', '$oficio', NOW(), '$idDireccion', '0', '0')";
 
             $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto) or die(mysqli_error($Conexion));
 

@@ -2,9 +2,6 @@
     include_once('conexion.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        //$idContraNoRegistrado = $_POST['idContraNoRegistrado'];
-        $Fecha_Inicio = $_POST['Fecha_Inicio'];
         $Fecha_Final = $_POST['Fecha_Final'];
         $id_presupuesto = $_POST['id_presupuesto'];
         
@@ -20,9 +17,9 @@
             contrato.Fecha_Final,
             contrato.id_presupuesto
         )
-        VALUES ('$Fecha_Inicio', '$Fecha_Final','$id_presupuesto')";
+        VALUES (NOW(), '$Fecha_Final','$id_presupuesto')";
            
-           if(mysqli_query($Conexion, $primerConsulta,$consulta)) {
+           if(mysqli_query($Conexion, $primerConsulta)) {
             echo 1;
         } else {
             echo 2;

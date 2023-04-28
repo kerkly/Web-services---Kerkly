@@ -14,12 +14,13 @@
                         '$idPresupuesto')";
             $ejecutado = mysqli_query($Conexion, $sql);
             if($ejecutado==1) {
-                echo 'Presupuesto Aceptado';
+               
                 $consulta = "UPDATE presupuesto SET cuerpo_mensaje = '!Gracias por su preferencia! Su servicio técnico llegará en breve.',
-                estado = 1 WHERE presupuesto.idPresupuesto =
-                $idPresupuesto;";
+                estado ='1' WHERE presupuesto.idPresupuesto =
+                '$idPresupuesto'";
 
                 if(mysqli_query($Conexion, $consulta)) {
+                     echo 'Presupuesto Aceptado';
                 } else {
                     echo "Error en el mensaje";
                 }

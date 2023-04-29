@@ -1,9 +1,9 @@
 <?php
 
 $servidor= "localhost";
-$NombreDB = "bdsaua";
-$UsaurioDB = "usrsaua";
-$ContrasenaDB = "AmorMio15$&";
+$NombreDB = "kerkly";
+$UsaurioDB = "AdminKerkly";
+$ContrasenaDB = "admin kerkly001";
 
 $Conexion = mysqli_connect($servidor, $UsaurioDB, $ContrasenaDB,$NombreDB);
 

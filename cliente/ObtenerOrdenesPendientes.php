@@ -14,15 +14,16 @@ include 'conexionK.php';
         kerkly.Apellido_Paterno,
         kerkly.Apellido_Materno,
         kerkly.correo_electronico,
+        kerkly.Telefono,
         presupuesto.idPresupuesto
     FROM
         oficios
     INNER JOIN oficio_kerkly ON oficios.idOficio = oficio_kerkly.id_oficioK
     INNER JOIN kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
     INNER JOIN presupuesto ON presupuesto.idOficio = oficio_kerkly.idoficio_trabajador
-        INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
+    INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
     WHERE
-        cliente.telefonoCliente = '$telefono' and presupuesto.aceptoCliente ='NULL'";
+        cliente.telefonoCliente = '$telefono' AND presupuesto.aceptoCliente = '0'";
         
         $check = mysqli_query($Conexion,$consulta);
 

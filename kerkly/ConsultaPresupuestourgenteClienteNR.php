@@ -6,8 +6,6 @@
     //$Telefono = 7470006065;
     //$oficio
 
-
-
     //obtendremos la curp usando el numero de telefono
     $ConsultaObtenerCurpK = "SELECT kerkly.Curp from kerkly where kerkly.Telefono = '$Telefono'";
     $resultadoCurp = mysqli_query($Conexion,$ConsultaObtenerCurpK);
@@ -48,42 +46,6 @@
                 echo mysqli_error($Conexion);
              }
     }
-
-    //echo json_encode($arrayDatos, JSON_UNESCAPED_UNICODE);
-    
-   
-
-      $consulta = "SELECT presupuesto_noregistrado.idPresupuestoNoRegistrado,
-      presupuesto_noregistrado.problema,
-      presupuesto_noregistrado.fechaPresupuesto,
-      direccion.latitud, direccion.longitud,
-      direccion.Calle, direccion.Colonia, direccion.No_Exterior,
-      direccion.Codigo_Postal,
-      direccion.Referencia, cliente.Correo, cliente.Nombre,
-      cliente.Apellido_Paterno, cliente.Apellido_Materno,
-      cliente.telefonoCliente FROM oficio_kerkly INNER JOIN oficios ON oficio_kerkly.id_oficioK = oficios.idOficio
-   INNER JOIN presupuesto_noregistrado ON presupuesto_noregistrado.idOficio = oficio_kerkly.idoficio_trabajador
-   INNER JOIN cliente ON cliente.Correo = presupuesto_noregistrado.idCliente
-   INNER JOIN direccion ON direccion.idDireccion = presupuesto_noregistrado.idDireccion
-   WHERE oficios.nombreO = '$oficio' AND presupuesto_noregistrado.kerkly_aceptado = 0 AND presupuesto_noregistrado.PagoTotal = 0.0";
-
-   $resultado = mysqli_query($Conexion,$consulta);
-    
-   $arrayDatos_ = array();
-      if(isset($resultado)){
-          while($fila2=mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-              $arrayDatos_ [] = $fila2;
-          }
-
-          $arr = array_merge($arrayDatos, $arrayDatos_);
-          echo json_encode($arr, JSON_UNESCAPED_UNICODE);
-          $Conexion->close();
-       }else{
-          echo mysqli_error($Conexion);
-       }
-      
-   }else{
-       echo mysqli_error($Conexion);
-    }
+   }
 
 ?>

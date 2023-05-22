@@ -3,8 +3,12 @@ include 'conexionK.php';
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
 
-    $Consulta = "SELECT DISTINCT oficios.nombreO from oficios INNER JOIN oficio_kerkly on oficios.idOficio =
-    oficio_kerkly.id_oficioK inner join kerkly on kerkly.Curp = oficio_kerkly.id_kerklyK";
+   // $Consulta = "SELECT DISTINCT oficios.nombreO from oficios INNER JOIN oficio_kerkly on oficios.idOficio =
+   // oficio_kerkly.id_oficioK inner join kerkly on kerkly.Curp = oficio_kerkly.id_kerklyK";
+   $Consulta = "SELECT
+   oficios.nombreO
+FROM
+   oficios";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

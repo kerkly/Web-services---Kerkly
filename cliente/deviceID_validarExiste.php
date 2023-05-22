@@ -5,7 +5,7 @@
        // $deviceID = 'd58d4c2a9b997463';
 
         $consulta = "SELECT cliente.deviceID
-                    FROM cliente WHERE cliente.deviceID = '$deviceID';";
+                    FROM cliente WHERE cliente.deviceID = '$deviceID'";
 
         $check = mysqli_query($Conexion,$consulta);
 

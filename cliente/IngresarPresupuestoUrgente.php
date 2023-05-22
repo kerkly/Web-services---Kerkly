@@ -17,7 +17,7 @@
         //$Referencia = $_POST['Referencia'];
 
         $sqlInsertDireccion = "INSERT INTO direccion (Ciudad, Estado, Pais, Calle, Colonia, No_Exterior, Codigo_Postal, latitud, longitud) VALUES
-        ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$latitud','$longitud');";
+        ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$latitud','$longitud')";
     
         $ejecutado = mysqli_query($Conexion, $sqlInsertDireccion);
     
@@ -34,8 +34,12 @@
             $cliente = $fila[0];
         }
 
-        $consultaOficio = "SELECT oficio_kerkly.idoficio_trabajador
-        FROM oficio_kerkly INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK WHERE oficios.nombreO = '$nombreO'";
+        $consultaOficio = "SELECT
+        oficios.idOficio
+    FROM
+        oficios
+    WHERE
+        oficios.nombreO = '$nombreO'";
 
         $resultadoOficio = mysqli_query($Conexion, $consultaOficio);
 
@@ -45,15 +49,27 @@
             $oficio = $fila[0];
         }
 
-        $insertPresupuesto = "INSERT INTO presupuesto_noregistrado (problema, idCliente, IdOficio, fechaPresupuesto, idDireccion) VALUES
-                                    ('$Problematica', '$cliente', $oficio, NOW(), $idDireccion)";
+        $insertPresupuesto = "INSERT INTO presupuestourgente(
+            problema,
+            idCliente,
+            idOficio,
+            fechaP,
+            idDireccion,
+            pago_total,
+            aceptoCliente,
+            trabajoTerminado
+        )
+        VALUES(
+            '$Problematica',
+            '$cliente',
+            '$oficio',
+            NOW(), '$idDireccion','0','0','0')";
 
-        $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto) or die(mysqli_error($Conexion));
-
-        if ($ejecutadoInsert == 1) {
-            echo "Datos enviados";
-        } else {
-            echo "Error en el sistema";
+                $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto);
+        if(isset($ejecutadoInsert)){
+             echo "1";
+        }else {
+            echo 'error';
         }
     }
 

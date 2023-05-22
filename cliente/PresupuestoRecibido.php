@@ -4,7 +4,7 @@ include 'conexionK.php';
 if($_SERVER['REQUEST_METHOD']=='GET'){
     $telefono_NoR=$_GET['telefono_NoR'];
 
-    $Consulta = "SELECT presupuesto_noregistrado.idPresupuestoNoRegistrado, presupuesto_noregistrado.fechaPresupuesto, 
+   /* $Consulta = "SELECT presupuesto_noregistrado.idPresupuestoNoRegistrado, presupuesto_noregistrado.fechaPresupuesto, 
     kerkly.Nombre, kerkly.Apellido_Paterno, kerkly.Apellido_Materno, kerkly.Telefono, direccion.Calle, direccion.Colonia, 
     direccion.No_Exterior,direccion.Referencia,direccion.Codigo_Postal, presupuesto_noregistrado.problema, presupuesto_noregistrado.PagoTotal,
      presupuesto_noregistrado.cuerpo_mensaje, 
@@ -15,7 +15,23 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     presupuesto_noregistrado.idNoRTelefono = clientenoregistrado.id_ClieteNoRegistrado INNER JOIN 
     direccion on clientenoregistrado.Direccion_idDireccion = direccion.idDireccion INNER JOIN numtelefonicodelclientenoregistrado on 
     clientenoregistrado.telefono_NoR = numtelefonicodelclientenoregistrado.NumClienteNoR where 
-    numtelefonicodelclientenoregistrado.NumClienteNoR = '$telefono_NoR' AND presupuesto_noregistrado.PagoTotal>0";
+    numtelefonicodelclientenoregistrado.NumClienteNoR = '$telefono_NoR' AND presupuesto_noregistrado.PagoTotal>0";*/
+
+    $Consulta = "SELECT
+    presupuesto_noregistrado.idPresupuestoNoRegistrado,
+    presupuesto_noregistrado.fechaPresupuesto,
+    presupuesto_noregistrado.problema,
+    presupuesto_noregistrado.PagoTotal,
+    oficios.nombreO,
+    clientenoregistrado.nombre_noR,
+    clientenoregistrado.apellidoP_noR,
+    clientenoregistrado.apellidoM_noR
+FROM
+    presupuesto_noregistrado
+INNER JOIN oficios ON oficios.idOficio = presupuesto_noregistrado.idOficio
+INNER JOIN clientenoregistrado ON clientenoregistrado.telefono_NoR = presupuesto_noregistrado.idNoRTelefono
+WHERE
+    presupuesto_noregistrado.idNoRTelefono = '$telefono_NoR'";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

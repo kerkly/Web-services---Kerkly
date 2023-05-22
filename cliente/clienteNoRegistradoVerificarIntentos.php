@@ -2,8 +2,9 @@
 include_once('conexionK.php');
 if($_SERVER['REQUEST_METHOD']=='GET'){
     $telefono_NoR=$_GET['telefono_NoR'];
+   // $telefono_NoR='7471503417';
  
-     $ConsultaTele = "SELECT clientenoregistrado.numIntentos, clientenoregistrado.nombre_noR FROM clientenoregistrado WHERE clientenoregistrado.telefono_NoR = $telefono_NoR";
+     $ConsultaTele = "SELECT clientenoregistrado.numIntentos FROM clientenoregistrado WHERE clientenoregistrado.telefono_NoR = '$telefono_NoR'";
      $checkTele= mysqli_query($Conexion, $ConsultaTele);
      $array = array();
      if(isset($checkTele)){
@@ -16,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
          echo 'Error';
      }
    
-   $Conexion->close(); 
+  // $Conexion->close(); 
     }
 
 ?>

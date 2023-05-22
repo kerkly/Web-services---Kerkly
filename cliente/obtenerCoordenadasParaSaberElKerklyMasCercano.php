@@ -2,10 +2,21 @@
 include 'conexionK.php';
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $oficio = $_GET['oficio'];
-        $Consulta = "SELECT kerkly.Curp, direccion.latitud, direccion.longitud from oficio_kerkly INNER JOIN kerkly on 
-        oficio_kerkly.id_kerklyK = kerkly.Curp INNER JOIN direccionkerkly on direccionkerkly.idKerkly  = kerkly.Curp INNER JOIN 
-        direccion on direccion.idDireccion = direccionkerkly.idDireccion  INNER JOIN oficios on oficios.idOficio = oficio_kerkly.id_oficioK 
-        where oficios.nombreO = '$oficio'";
+       
+       $Consulta = "SELECT
+       kerkly.Curp,
+       kerkly.Telefono,
+       direccion.latitud,
+       direccion.longitud,
+       direccion.Ciudad
+   FROM
+       oficio_kerkly
+   INNER JOIN kerkly ON oficio_kerkly.id_kerklyK = kerkly.Curp
+   INNER JOIN direccionkerkly ON direccionkerkly.idKerkly = kerkly.Curp
+   INNER JOIN direccion ON direccion.idDireccion = direccionkerkly.idDireccion
+   INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK
+   WHERE
+       oficios.nombreO = '$oficio'";
 
         $Resultado = mysqli_query($Conexion, $Consulta);
         $array = array();

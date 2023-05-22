@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD']=='GET') {
 
     $consulta = "SELECT clientenoregistrado.nombre_noR, clientenoregistrado.apellidoP_noR,
      clientenoregistrado.apellidoM_noR, clientenoregistrado.numIntentos FROM
-     clientenoregistrado WHERE clientenoregistrado.telefono_NoR = '$telefono_NoR';";
+     clientenoregistrado WHERE clientenoregistrado.telefono_NoR = '$telefono_NoR'";
 
      $check = mysqli_query($Conexion,$consulta);
 

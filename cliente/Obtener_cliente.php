@@ -4,8 +4,16 @@
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $telefono = $_GET['telefonoCliente'];
 
-        $consulta = "SELECT cliente.Correo, cliente.Nombre, cliente.Apellido_Paterno, cliente.Apellido_Materno, cliente.fotoPerfil
-        from cliente where cliente.telefonoCliente = '$telefono'";
+        $consulta = "SELECT
+        cliente.Correo,
+        cliente.Nombre,
+        cliente.Apellido_Paterno,
+        cliente.Apellido_Materno,
+        cliente.fotoPerfil
+    FROM
+        cliente
+    WHERE
+        cliente.telefonoCliente = '$telefono'";
 
         $check = mysqli_query($Conexion,$consulta);
 

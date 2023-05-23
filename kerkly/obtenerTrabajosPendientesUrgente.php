@@ -3,17 +3,19 @@
 include_once('conexion.php');
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
-    $telefono_NoR=$_GET['Telefono'];
+    $telefono=$_GET['Telefono'];
 
     $Consulta = "SELECT
+    presupuestourgente.idPresupuesto,
+    presupuestourgente.problema,
+    presupuestourgente.fechaP,
     cliente.Nombre,
     cliente.Apellido_Paterno,
     cliente.Apellido_Materno,
     cliente.telefonoCliente,
     cliente.Correo,
-    presupuesto_noregistrado.problema,
-    presupuesto_noregistrado.idPresupuestoNoRegistrado,
-    presupuesto_noregistrado.fechaPresupuesto,
+    direccion.latitud,
+    direccion.longitud,
     direccion.Ciudad,
     direccion.Estado,
     direccion.Pais,
@@ -21,15 +23,17 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     direccion.Colonia,
     direccion.No_Exterior,
     direccion.Codigo_Postal,
-    direccion.Referencia
+    direccion.Referencia,
+    oficios.nombreO
 FROM
-    presupuesto_noregistrado
-INNER JOIN oficio_kerkly ON presupuesto_noregistrado.idOficio = oficio_kerkly.idoficio_trabajador
+    presupuestourgente
+INNER JOIN oficio_kerkly ON presupuestourgente.idOficio = oficio_kerkly.id_oficioK
 INNER JOIN kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
-INNER JOIN cliente ON cliente.Correo = presupuesto_noregistrado.idCliente
+INNER JOIN cliente ON cliente.Correo = presupuestourgente.idCliente
 INNER JOIN direccion ON direccion.idDireccion = cliente.Direccion_idDireccion
+INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK
 WHERE
-    kerkly.Telefono = '$telefono_NoR' AND presupuesto_noregistrado.trabajoTerminado = '0'";
+    kerkly.Telefono = '$telefono' AND presupuestourgente.aceptoCliente = '1'";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

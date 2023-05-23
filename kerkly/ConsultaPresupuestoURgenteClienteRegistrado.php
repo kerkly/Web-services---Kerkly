@@ -29,12 +29,14 @@
      direccion.No_Exterior,
      direccion.Codigo_Postal,
      direccion.Referencia,
+     direccion.latitud,
+     direccion.longitud,
      oficios.nombreO
  FROM
      oficio_kerkly
  INNER JOIN presupuestourgente ON oficio_kerkly.id_oficioK = presupuestourgente.idOficio
  INNER JOIN cliente ON presupuestourgente.idCliente = cliente.Correo
- INNER JOIN oficios on oficios.idOficio = presupuestourgente.idOficio
+ INNER JOIN oficios ON oficios.idOficio = presupuestourgente.idOficio
  INNER JOIN direccion ON presupuestourgente.idDireccion = direccion.idDireccion
  WHERE
      oficio_kerkly.id_kerklyK = '$curpObtenida' AND presupuestourgente.pago_total = 0.0";

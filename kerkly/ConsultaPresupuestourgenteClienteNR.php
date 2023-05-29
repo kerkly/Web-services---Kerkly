@@ -2,8 +2,6 @@
   include_once('conexion.php');
  if($_SERVER['REQUEST_METHOD']=='GET'){
     $Telefono = $_GET['Telefono'];
-    $oficio = $_GET['oficio'];
-   
     //obtendremos la curp usando el numero de telefono
     $ConsultaObtenerCurpK = "SELECT kerkly.Curp from kerkly where kerkly.Telefono = '$Telefono'";
     $resultadoCurp = mysqli_query($Conexion,$ConsultaObtenerCurpK);
@@ -31,15 +29,19 @@
      direccion.No_Exterior,
      direccion.Codigo_Postal,
      direccion.Referencia,
-     oficios.nombreO
+     oficios.nombreO,
+     kerkly.Nombre,
+     kerkly.Apellido_Paterno,
+     kerkly.Apellido_Materno
  FROM
      oficio_kerkly
  INNER JOIN presupuesto_noregistrado ON oficio_kerkly.id_oficioK = presupuesto_noregistrado.idOficio
  INNER JOIN clientenoregistrado ON presupuesto_noregistrado.idNoRTelefono = clientenoregistrado.telefono_NoR
   INNER JOIN oficios ON oficios.idOficio = presupuesto_noregistrado.idOficio
  INNER JOIN direccion ON presupuesto_noregistrado.idDireccion = direccion.idDireccion
+ INNER JOIN kerkly ON  kerkly.Curp = 'MILM981221HGRSPN06'
  WHERE
-     oficio_kerkly.id_kerklyK = '$curpObtenida' AND presupuesto_noregistrado.PagoTotal = 0.0";
+     oficio_kerkly.id_kerklyK = 'MILM981221HGRSPN06' AND presupuesto_noregistrado.PagoTotal = 0.0";
 
      $resultado = mysqli_query($Conexion,$consultaPresupuesto);
     

@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     presupuesto_noregistrado.fechaPresupuesto,
     presupuesto_noregistrado.problema,
     presupuesto_noregistrado.PagoTotal,
+    kerkly.Telefono,
     oficios.nombreO,
     clientenoregistrado.nombre_noR,
     clientenoregistrado.apellidoP_noR,
@@ -30,6 +31,7 @@ FROM
     presupuesto_noregistrado
 INNER JOIN oficios ON oficios.idOficio = presupuesto_noregistrado.idOficio
 INNER JOIN clientenoregistrado ON clientenoregistrado.telefono_NoR = presupuesto_noregistrado.idNoRTelefono
+INNER JOIN kerkly ON kerkly.Curp = presupuesto_noregistrado.idKerklyQueACepto
 WHERE
     presupuesto_noregistrado.idNoRTelefono = '$telefono_NoR'";
 

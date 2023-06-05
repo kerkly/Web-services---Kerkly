@@ -23,6 +23,14 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     presupuesto_noregistrado.problema,
     presupuesto_noregistrado.PagoTotal,
     kerkly.Telefono,
+    kerkly.Nombre,
+    kerkly.Apellido_Paterno,
+    kerkly.Apellido_Materno,
+    kerkly.correo_electronico,
+    direccion.Pais,
+    direccion.Ciudad,
+    direccion.Colonia,
+    direccion.Calle,
     oficios.nombreO,
     clientenoregistrado.nombre_noR,
     clientenoregistrado.apellidoP_noR,
@@ -30,6 +38,8 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 FROM
     presupuesto_noregistrado
 INNER JOIN oficios ON oficios.idOficio = presupuesto_noregistrado.idOficio
+INNER JOIN direccionkerkly ON direccionkerkly.idKerkly = presupuesto_noregistrado.idKerklyQueACepto
+INNER JOIN direccion ON direccion.idDireccion = direccionkerkly.idDireccion
 INNER JOIN clientenoregistrado ON clientenoregistrado.telefono_NoR = presupuesto_noregistrado.idNoRTelefono
 INNER JOIN kerkly ON kerkly.Curp = presupuesto_noregistrado.idKerklyQueACepto
 WHERE

@@ -4,12 +4,22 @@
         $telefono = $_GET['telefono'];
         //$telefono = '7470006061';
 
-        $consulta = "SELECT kerkly.Curp,
+        $consulta = "SELECT
+        kerkly.Curp,
         kerkly.Nombre,
         kerkly.Apellido_Paterno,
         kerkly.Apellido_Materno,
-        kerkly.correo_electronico
-        FROM kerkly WHERE kerkly.Telefono = '$telefono';";
+        kerkly.correo_electronico,
+        direccion.Pais,
+        direccion.Ciudad,
+        direccion.Colonia,
+        direccion.Calle
+    FROM
+        kerkly
+        INNER JOIN direccionkerkly ON direccionkerkly.idKerkly = kerkly.Curp
+        INNER JOIN direccion ON direccion.idDireccion = direccionkerkly.idDireccion
+    WHERE
+        kerkly.Telefono = '$telefono'";
 
         $check = mysqli_query($Conexion,$consulta);
 

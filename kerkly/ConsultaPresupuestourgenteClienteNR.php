@@ -39,9 +39,9 @@
  INNER JOIN clientenoregistrado ON presupuesto_noregistrado.idNoRTelefono = clientenoregistrado.telefono_NoR
   INNER JOIN oficios ON oficios.idOficio = presupuesto_noregistrado.idOficio
  INNER JOIN direccion ON presupuesto_noregistrado.idDireccion = direccion.idDireccion
- INNER JOIN kerkly ON  kerkly.Curp = 'MILM981221HGRSPN06'
+ INNER JOIN kerkly ON  kerkly.Curp = '$curpObtenida'
  WHERE
-     oficio_kerkly.id_kerklyK = 'MILM981221HGRSPN06' AND presupuesto_noregistrado.PagoTotal = 0.0";
+     oficio_kerkly.id_kerklyK = '$curpObtenida' AND presupuesto_noregistrado.PagoTotal = 0.0";
 
      $resultado = mysqli_query($Conexion,$consultaPresupuesto);
     

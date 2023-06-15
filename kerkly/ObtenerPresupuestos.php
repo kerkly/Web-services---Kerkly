@@ -2,7 +2,6 @@
 
 include_once('conexion.php');
 if($_SERVER['REQUEST_METHOD']=='GET'){
-
     $Telefono = $_GET['Telefono'];
 
     $consultaPresupuesto = "SELECT
@@ -20,13 +19,15 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     direccion.Codigo_Postal,
     direccion.Referencia,
     presupuesto.fechaP,
-    presupuesto.idPresupuesto
+    presupuesto.idPresupuesto,
+    oficios.nombreO
 FROM
     kerkly
 INNER JOIN oficio_kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK
 INNER JOIN presupuesto ON oficio_kerkly.idoficio_trabajador = presupuesto.idOficio
 INNER JOIN cliente ON presupuesto.idCliente = cliente.Correo
 INNER JOIN direccion ON cliente.Direccion_idDireccion = direccion.idDireccion
+INNER JOIN oficios on oficios.idOficio = presupuesto.TipoServicio
 WHERE
     kerkly.Telefono = '$Telefono' AND presupuesto.pago_total IS NULL || presupuesto.pago_total = 0.0";
 

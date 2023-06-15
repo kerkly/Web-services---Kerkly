@@ -10,9 +10,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     $resultado = mysqli_query($Conexion,$ConsultaP) or die (mysqli_error ($Conexion));
     if(isset($resultado)){
-        echo 'Presupuesto enviado';
+        echo 'pago enviado';
     }else{
-         echo 'Error en el presupuesto';
+         echo 'Error ';
     }
    
 

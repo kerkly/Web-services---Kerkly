@@ -17,6 +17,7 @@ FROM
         while($fila = mysqli_fetch_array($Resultado, MYSQLI_ASSOC)){
             $array[] = $fila;
         }
+        echo 'entro';
         echo json_encode($array, JSON_UNESCAPED_UNICODE);
         $Conexion->close();
     }else{

@@ -2,13 +2,21 @@
 include_once('conexion.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $idPresupuestoNoRegistrado = $_POST['idPresupuestoNoRegistrado'];
-    $kerkly_aceptado = $_POST['kerkly_aceptado'];
+    $idPresupuesto = $_POST['idPresupuesto'];
+    $Curp = $_POST['Curp'];
 
-    $consulta = "UPDATE presupuesto_noregistrado set presupuesto_noregistrado.kerkly_aceptado = $kerkly_aceptado WHERE presupuesto_noregistrado.idPresupuestoNoRegistrado =$idPresupuestoNoRegistrado";
+   // echo $idPresupuesto;
+    $consulta = "UPDATE
+    presupuestourgente
+SET
+    idKerklyAcepto='$Curp'
+WHERE
+    presupuestourgente.idPresupuesto = '$idPresupuesto'";
 
     if(mysqli_query($Conexion, $consulta)){
-        echo $kerkly_aceptado;
+        echo "1";
+    }else{
+        echo 'Lo sentimos tenemos Problemas con el servidor';
     }
 
 }

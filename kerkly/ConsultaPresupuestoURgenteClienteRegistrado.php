@@ -19,6 +19,7 @@
      presupuestourgente.problema,
      presupuestourgente.fechaP,
      presupuestourgente.idPresupuesto,
+     presupuestourgente.uidCliente,
      cliente.telefonoCliente,
      cliente.Nombre,
      cliente.Correo,
@@ -39,7 +40,7 @@
  INNER JOIN oficios ON oficios.idOficio = presupuestourgente.idOficio
  INNER JOIN direccion ON presupuestourgente.idDireccion = direccion.idDireccion
  WHERE
-     oficio_kerkly.id_kerklyK = '$curpObtenida' AND presupuestourgente.pago_total = 0.0";
+     oficio_kerkly.id_kerklyK = '$curpObtenida' AND presupuestourgente.aceptoK = 0";
 
      $resultado = mysqli_query($Conexion,$consultaPresupuesto);
     

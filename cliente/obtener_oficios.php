@@ -5,10 +5,16 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
    // $Consulta = "SELECT DISTINCT oficios.nombreO from oficios INNER JOIN oficio_kerkly on oficios.idOficio =
    // oficio_kerkly.id_oficioK inner join kerkly on kerkly.Curp = oficio_kerkly.id_kerklyK";
-   $Consulta = "SELECT
+  /* $Consulta = "SELECT
    oficios.nombreO
 FROM
-   oficios";
+   oficios";*/
+   $Consulta = "SELECT
+   oficios.nombreO,
+   palabrasclavesoficios.PalabrasClaves
+FROM
+   oficios
+INNER JOIN palabrasclavesoficios ON palabrasclavesoficios.idPalabrasClaves = oficios.idOficio";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

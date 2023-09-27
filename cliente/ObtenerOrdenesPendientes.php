@@ -23,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     presupuesto.pago_total,
     presupuesto.problema,
     presupuesto.fechaP,
-    presupuesto.aceptoCliente
+    presupuesto.aceptoCliente,
+    presupuesto.uidCliente
 FROM
     oficios
 INNER JOIN oficio_kerkly ON oficios.idOficio = oficio_kerkly.id_oficioK

@@ -5,7 +5,7 @@
     $correo = $_POST['Correo'];
     $deviceID = $_POST['deviceID'];
 
-    $consulta = "UPDATE cliente SET cerroSesion = '1', deviceID = '$deviceID' WHERE cliente.Correo = '$correo';";
+    $consulta = "UPDATE cliente SET cerroSesion = '1', deviceID = '$deviceID' WHERE cliente.Correo = '$correo'";
 
     if(mysqli_query($Conexion, $consulta)) {
         echo 1;

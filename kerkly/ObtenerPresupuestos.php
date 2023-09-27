@@ -20,7 +20,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     direccion.Referencia,
     presupuesto.fechaP,
     presupuesto.idPresupuesto,
-    oficios.nombreO
+    oficios.nombreO,
+    presupuesto.uidCliente
+    
 FROM
     kerkly
 INNER JOIN oficio_kerkly ON kerkly.Curp = oficio_kerkly.id_kerklyK

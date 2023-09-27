@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
 
     if(isset($check)){ 
-        $hash = "0";
+        $telefono = "0";
         while($fila= mysqli_fetch_array($check)){
-            $hash = $fila[0];
+            $telefono = $fila[0];
         } 
-
-        echo $hash;
+        echo $telefono;
+        
     } else {
         echo 0;
     }

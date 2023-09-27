@@ -9,7 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $consulta = "UPDATE
     presupuestourgente
 SET
-    idKerklyAcepto='$Curp'
+    idKerklyAcepto = '$Curp',
+    presupuestourgente.aceptoK = 1
 WHERE
     presupuestourgente.idPresupuesto = '$idPresupuesto'";
 

@@ -15,7 +15,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         }
        
         if(password_verify($Contrasena,$hash)){
-            echo 'Bienvenido';
+            $consulta = "UPDATE cliente set cerroSesion = 0 WHERE cliente.telefonoCliente = '$telefonoCliente'";
+            if(mysqli_query($Conexion, $consulta)) {
+               echo 'Bienvenido';
+            } 
         }else{
             echo 'Contraseña Incorrecta';
         }

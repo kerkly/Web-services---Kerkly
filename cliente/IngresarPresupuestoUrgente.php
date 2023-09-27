@@ -14,7 +14,7 @@
         $Colonia = $_POST['Colonia'];
         $No_Exterior  = $_POST['No_Exterior'];
         $Codigo_Postal = $_POST['Codigo_Postal'];
-        //$Referencia = $_POST['Referencia'];
+        $uidCliente = $_POST['uidCliente'];
 
         $sqlInsertDireccion = "INSERT INTO direccion (Ciudad, Estado, Pais, Calle, Colonia, No_Exterior, Codigo_Postal, latitud, longitud) VALUES
         ('$Ciudad', '$Estado', '$Pais', '$Calle', '$Colonia', '$No_Exterior', '$Codigo_Postal', '$latitud','$longitud')";
@@ -57,17 +57,20 @@
             idDireccion,
             pago_total,
             aceptoCliente,
-            trabajoTerminado
+            trabajoTerminado,
+            aceptoK,
+            uidCliente
         )
         VALUES(
             '$Problematica',
             '$cliente',
             '$oficio',
-            NOW(), '$idDireccion','0','0','0')";
+            NOW(), '$idDireccion','0','0','0','0','$uidCliente')";
 
                 $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto);
         if(isset($ejecutadoInsert)){
-             echo "1";
+             $idGenerado = mysqli_insert_id($Conexion);
+             echo $idGenerado;
         }else {
             echo 'error';
         }

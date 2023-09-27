@@ -16,6 +16,7 @@
         $No_Exterior  = $_POST['No_Exterior'];
         $Codigo_Postal = $_POST['Codigo_Postal'];
         $correoCliente = $_POST['correoCliente'];
+        $uidCliente = $_POST['uidCliente'];
        // $Referencia = $_POST['Referencia'];
 
 
@@ -74,7 +75,8 @@
                 aceptoCliente,
                 trabajoTerminado,
                 pago_total,
-                idOficio
+                idOficio,
+                uidCliente
             )
             VALUES(
                 '$Problematica',
@@ -86,15 +88,17 @@
                  '0',
                  '0',
                  '0',
-                 $oficio)";
+                 '$oficio',
+                 '$uidCliente')";
 
            // echo $correoCliente;
             $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto);
             
             if ($ejecutadoInsert == 1) {
-                echo "Datos enviados";
+                $idGenerado = mysqli_insert_id($Conexion);
+                echo $idGenerado;
             } else {
-                echo "Error en el sistema";
+                echo "error";
             }
         }
 

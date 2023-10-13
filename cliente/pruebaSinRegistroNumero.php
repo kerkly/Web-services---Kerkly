@@ -1,4 +1,5 @@
 <?php
+<?php
 require_once('conexionK.php');
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $telefonoCliente=$_POST['telefonoCliente'];
@@ -26,6 +27,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 if ($res == $telefonoCliente){
                     echo $res;
                 }else{
+                    //echo 'entrooo';
                  $insert1 = "INSERT INTO numtelefonicodelclientenoregistrado (numtelefonicodelclientenoregistrado.NumClienteNoR) VALUES ('$telefonoCliente')";
                  $consultaInsert1 = mysqli_query($Conexion,$insert1);
                  if(isset($consultaInsert1)){

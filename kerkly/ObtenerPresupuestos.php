@@ -11,6 +11,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     cliente.Apellido_Paterno,
     cliente.Apellido_Materno,
     cliente.Correo,
+    cliente.uidCliente,
     direccion.latitud,
     direccion.longitud,
     direccion.Calle,
@@ -20,8 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     direccion.Referencia,
     presupuesto.fechaP,
     presupuesto.idPresupuesto,
-    oficios.nombreO,
-    presupuesto.uidCliente
+    oficios.nombreO
     
 FROM
     kerkly

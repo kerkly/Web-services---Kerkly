@@ -7,14 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
    // $telefono = '7471503418';
     $consulta = "SELECT
     oficios.nombreO,
-    cliente.Nombre,
-    cliente.Apellido_Paterno,
-    cliente.Apellido_Materno,
     kerkly.Nombre,
     kerkly.Apellido_Paterno,
     kerkly.Apellido_Materno,
     kerkly.correo_electronico,
     kerkly.Telefono,
+    kerkly.uidKerkly,
     direccion.Pais,
     direccion.Ciudad,
     direccion.Colonia,
@@ -23,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     presupuesto.pago_total,
     presupuesto.problema,
     presupuesto.fechaP,
-    presupuesto.aceptoCliente,
-    presupuesto.uidCliente
+    presupuesto.aceptoCliente
+   
 FROM
     oficios
 INNER JOIN oficio_kerkly ON oficios.idOficio = oficio_kerkly.id_oficioK

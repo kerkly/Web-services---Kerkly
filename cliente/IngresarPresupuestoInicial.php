@@ -16,7 +16,6 @@
         $No_Exterior  = $_POST['No_Exterior'];
         $Codigo_Postal = $_POST['Codigo_Postal'];
         $correoCliente = $_POST['correoCliente'];
-        $uidCliente = $_POST['uidCliente'];
        // $Referencia = $_POST['Referencia'];
 
 
@@ -75,8 +74,7 @@
                 aceptoCliente,
                 trabajoTerminado,
                 pago_total,
-                idOficio,
-                uidCliente
+                idOficio
             )
             VALUES(
                 '$Problematica',
@@ -88,8 +86,7 @@
                  '0',
                  '0',
                  '0',
-                 '$oficio',
-                 '$uidCliente')";
+                 '$oficio')";
 
            // echo $correoCliente;
             $ejecutadoInsert = mysqli_query($Conexion, $insertPresupuesto);

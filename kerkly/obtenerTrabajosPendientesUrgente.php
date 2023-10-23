@@ -14,6 +14,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     cliente.Apellido_Materno,
     cliente.telefonoCliente,
     cliente.Correo,
+    cliente.uidCliente,
     direccion.latitud,
     direccion.longitud,
     direccion.Ciudad,
@@ -33,7 +34,7 @@ INNER JOIN cliente ON cliente.Correo = presupuestourgente.idCliente
 INNER JOIN direccion ON direccion.idDireccion = cliente.Direccion_idDireccion
 INNER JOIN oficios ON oficios.idOficio = oficio_kerkly.id_oficioK
 WHERE
-    kerkly.Telefono = '$telefono' AND presupuestourgente.aceptoCliente = '1' AND presupuestourgente.pago_total > 0";
+    kerkly.Telefono = '$telefono' and presupuestourgente.aceptoK = '1'";
 
     $Resultado = mysqli_query($Conexion, $Consulta);
 

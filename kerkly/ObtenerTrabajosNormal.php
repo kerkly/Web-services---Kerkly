@@ -11,6 +11,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     cliente.Apellido_Materno,
     cliente.telefonoCliente,
     cliente.Correo,
+    cliente.uidCliente,
     presupuesto.problema,
     presupuesto.idPresupuesto,
     presupuesto.fechaP,
